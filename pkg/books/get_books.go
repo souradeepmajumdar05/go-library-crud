@@ -3,8 +3,8 @@ package books
 import (
 	"net/http"
 
-	"github.com/<YOUR-USERNAME>/go-gin-postgresql-api/pkg/common/models"
 	"github.com/gin-gonic/gin"
+	"github.com/souradeepmajumdar05/go-library-crud/pkg/common/models"
 )
 
 func (h handler) GetBooks(ctx *gin.Context) {

@@ -1,36 +1,36 @@
 package books
 
 import (
-    "net/http"
+	"net/http"
 
-    "github.com/<YOUR-USERNAME>/go-gin-postgresql-api/pkg/common/models"
-    "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
+	"github.com/souradeepmajumdar05/go-library-crud/pkg/common/models"
 )
 
 type AddBookRequestBody struct {
-    Title       string `json:"title"`
-    Author      string `json:"author"`
-    Description string `json:"description"`
+	Title       string `json:"title"`
+	Author      string `json:"author"`
+	Description string `json:"description"`
 }
 
 func (h handler) AddBook(ctx *gin.Context) {
-    body := AddBookRequestBody{}
+	body := AddBookRequestBody{}
 
-    if err := ctx.BindJSON(&body); err != nil {
-        ctx.AbortWithError(http.StatusBadRequest, err)
-        return
-    }
+	if err := ctx.BindJSON(&body); err != nil {
+		ctx.AbortWithError(http.StatusBadRequest, err)
+		return
+	}
 
-    var book models.Book
+	var book models.Book
 
-    book.Title = body.Title
-    book.Author = body.Author
-    book.Description = body.Description
+	book.Title = body.Title
+	book.Author = body.Author
+	book.Description = body.Description
 
-    if result := h.DB.Create(&book); result.Error != nil {
-        ctx.AbortWithError(http.StatusNotFound, result.Error)
-        return
-    }
+	if result := h.DB.Create(&book); result.Error != nil {
+		ctx.AbortWithError(http.StatusNotFound, result.Error)
+		return
+	}
 
-    ctx.JSON(http.StatusCreated, &book)
+	ctx.JSON(http.StatusCreated, &book)
 }

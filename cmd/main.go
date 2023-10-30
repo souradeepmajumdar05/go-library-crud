@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/<yout-git-id>/go-gin-postgresql-api/pkg/books"
-	"github.com/<yout-git-id>/go-gin-postgresql-api/pkg/common/db"
 	"github.com/gin-gonic/gin"
+	"github.com/souradeepmajumdar05/go-library-crud/pkg/books"
+	"github.com/souradeepmajumdar05/go-library-crud/pkg/common/db"
 	"github.com/spf13/viper"
 )
 
